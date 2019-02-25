@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Disting mk4 SD Card Playlist Manaager</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+    .write-btn {
+      width:65%;
+    }
+
+    .main .col ul {
+      max-height: 432px;
+      overflow: scroll;
+      overflow-x:visible;
+      overflow-y:auto;
+    }
+
+    .collection-item:hover,
+    .collection-item:hover {
+      background-color:#ddd;
+    }
+
+    #settings .collection-item:hover {
+      background-color: inherit;
+    }
+
+    #playlist .collection .active,
+    #samples .collection .active {
+      font-weight: bold;
+    }
+
+    #settings li.actual label {
+      color: #000;;
+      font-weight:bold;
+    }
+    #settings li.default label {
+      font-style: italic;
+    }
+    </style>
+  </head>
+  <body>
+
+    <h2 class="center">Disting mk4 SD Card Playlist Manager</h2>
+
+    <div class="main row">
+
+      <div class="col s4">
+        <h3>Playlists</h3>
+        <ul id="playlist" class="collection"></ul>
+        <div class="addPlaylistRow">
+          <button id="addPlaylistBtn" class="waves-effect waves-light btn">
+            New Playlist
+          </button>
+        </div>
+      </div>
+
+      <div class="col s4">
+        <h3>Samples</h3>
+        <ul id="samples" class="collection"></ul>
+        <div>
+          <button id="addSamplestBtn" class="waves-effect waves-light btn" disabled>
+            Add Sample
+          </button>
+        </div>
+
+      </div>
+
+      <div class="col s4">
+        <h3>Settings</h3>
+        <form class="col s12">
+        <ul id="settings" class="collection" hidden>
+          <li class="collection-item">
+            <label for="loop">Loop</label>
+            <div class="switch">
+              <label>
+                Off<input type="checkbox" id="loop"><span class="lever"></span>On
+              </label>
+            </div>
+          </li>
+          <li class="collection-item">
+            <label for="first_name">Fade Out</label>
+            <input placeholder="Fade out to apply when a sample is retriggered, in miliseconds." id="fadeIn" type="number" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="first_name">Fade In</label>
+            <input placeholder="Fade in to apply when a sample is retriggered, in miliseconds." id="fadeOut" type="number" class="validate">
+          </li>
+
+          <!-- <li class="collection-item">Gap [ 0 ms ] </li>
+          <li class="collection-item">Retrigger On Sample Change [ 0 ms ] </li>
+          <li class="collection-item">Fixed Pitch[ 0 ms ] </li>
+          <li class="collection-item">Ramp [ 0 ms ] </li>
+          <li class="collection-item">Triggers [ 0 ms ] </li>
+          <li class="collection-item">Clocks[ 0 ms ] </li>
+          <li class="collection-item">Wave Length [ 0 ms ] </li> -->
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <div class="center-align">
+        <a class="write-btn waves-effect waves-light btn-large">
+          <i class="material-icons sd_card">sd_card</i>
+          Write to SD Card
+        </a>
+      </div>
+    </div>
+
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./dist/renderer.js')
+  </script>
+</html>
