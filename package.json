@@ -20,9 +20,9 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^2.0.2",
-    "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "electron": "^2.0.17",
+    "tslint": "^5.13.0",
+    "typescript": "^2.9.2"
   },
   "dependencies": {
     "electron-log": "^3.0.1",
