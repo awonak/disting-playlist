@@ -1,4 +1,5 @@
 import { ipcRenderer } from "electron";
+import log from "electron-log";
 
 import { Playlist } from "./models/playlist";
 import { PlaylistItem } from "./models/playlistItem";
@@ -7,6 +8,7 @@ import { Sample } from "./models/sample";
 
 const addPlaylistBtn = document.getElementById("addPlaylistBtn");
 const addSamplestBtn = document.getElementById("addSamplestBtn");
+const writeToSDCardBtn = document.getElementById("writeToSDCardBtn");
 const playlistElement = document.getElementById("playlist");
 const sampleListElement = document.getElementById("samples");
 const settingsListElement = document.getElementById("settings");
@@ -73,6 +75,11 @@ settingsListElement.onchange = (e: any) => {
     activeSample.updateSetting(e.target.id, e.target.value);
     activeSample.renderSettings(activePlaylistItem.getDefaultSettings());
 };
+
+// Click Write to SD Card button.
+writeToSDCardBtn.addEventListener("click", (e: any) => {
+    log.debug(playlist.serialize());
+});
 
 // Received playlist name from add playlist modal.
 ipcRenderer.on("playlist:add", (e: any, name: string) => {

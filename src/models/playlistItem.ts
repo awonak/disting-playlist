@@ -46,6 +46,10 @@ export class PlaylistItem {
         this.samples.render();
     }
 
+    public serialize(): string {
+        return this.samples.serialize();
+    }
+
     private createElement(): void {
         const li = document.createElement("li");
         const itemText = document.createTextNode(this.name);

@@ -25,20 +25,12 @@ function createWindow() {
 }
 
 function createPlaylistWindow() {
-  // Create the browser window.
   playlistWindow = new BrowserWindow({
     height: 200,
     width: 300,
   });
-
-  // and load the index.html of the app.
   playlistWindow.loadFile(path.join(__dirname, "../add_playlist.html"));
-
-  // Emitted when the window is closed.
   playlistWindow.on("closed", () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     playlistWindow = null;
   });
 }

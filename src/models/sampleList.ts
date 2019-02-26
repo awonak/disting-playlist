@@ -55,4 +55,12 @@ export class SampleList {
         this.clear();
         this.samples.forEach((sample) => this.renderItem(sample));
     }
+
+    public serialize(): string {
+        const buffer: string[] = [];
+        this.samples.forEach((sample) => {
+            buffer.push(sample.serialize());
+        });
+        return buffer.join("");
+    }
 }

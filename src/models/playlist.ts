@@ -35,10 +35,14 @@ export class Playlist {
         return playlistItem;
     }
 
-    public clear() {
-        while (this.element.firstChild) {
-            this.element.removeChild(this.element.firstChild);
-        }
+    public serialize(): string {
+        const buffer: string[] = [];
+        this.items.forEach((item) => {
+            buffer.push(`PLAYLIST::: ${item.getName()}\n`);
+            buffer.push("disting playlist v1\n");
+            buffer.push(item.serialize());
+        });
+        return buffer.join("");
     }
 
     private renderItem(item: PlaylistItem): void {

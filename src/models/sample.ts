@@ -53,6 +53,15 @@ export class Sample {
         }
     }
 
+    public serialize(): string {
+        const buffer: string[] = [];
+        if (this.name !== DEFAULT_NAME) {
+            buffer.push(this.name + "\n");
+        }
+        buffer.push(this.settings.serialize());
+        return buffer.join("");
+    }
+
     private createElement() {
         const li = document.createElement("li");
         const itemText = document.createTextNode(this.name);

@@ -31,4 +31,14 @@ export class Settings {
         this.settings.forEach((setting) =>
             this.renderItem(setting, d.getSetting(setting.getName())));
     }
+
+    public serialize(): string {
+        const buffer: string[] = [];
+        this.settings.forEach((setting) => {
+            if (setting.getValue()) {
+                buffer.push(setting.serialize());
+            }
+        });
+        return buffer.join("");
+    }
 }

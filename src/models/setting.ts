@@ -42,4 +42,8 @@ export class Setting {
             }
         }
     }
+
+    public serialize(): string {
+        return (this.value) ? `-${this.name}=${this.value}\n` : null;
+    }
 }
