@@ -1,5 +1,6 @@
 import { Sample } from "./sample";
-import { SampleList } from "./sampleList";
+import { DEFAULT_NAME, SampleList } from "./sampleList";
+import { Settings } from "./settings";
 
 export class PlaylistItem {
     private element: HTMLElement;
@@ -34,6 +35,10 @@ export class PlaylistItem {
 
     public selectSample(name: string): Sample {
         return this.samples.selectSample(name);
+    }
+
+    public getDefaultSettings(): Settings {
+        return this.getSample(DEFAULT_NAME).getSettings();
     }
 
     public render() {

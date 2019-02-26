@@ -1,4 +1,4 @@
-import {Sample} from "./sample";
+import { Sample } from "./sample";
 export const DEFAULT_NAME = "Playlist Default Sample Settings";
 
 export class SampleList {
@@ -35,7 +35,7 @@ export class SampleList {
     public selectSample(name: string) {
         const sample = this.getSample(name);
         this.deselectSample();
-        sample.play();
+        sample.togglePlay();
         sample.getElement().classList.add("active");
         sample.renderSettings(this.getSample(DEFAULT_NAME).getSettings());
         return sample;

@@ -40,8 +40,9 @@ export class Sample {
         setting.setValue(value);
     }
 
-    public play() {
+    public togglePlay() {
         if (this.audio) {
+            this.audio.currentTime = 0;
             (this.audio.paused) ? this.audio.play() : this.audio.pause();
         }
     }
@@ -56,6 +57,7 @@ export class Sample {
         const li = document.createElement("li");
         const itemText = document.createTextNode(this.name);
         li.classList.add("collection-item");
+        li.classList.add("waves-effect");
         li.setAttribute("name", this.name);
         if (this.name !== DEFAULT_NAME) {
             this.audio = document.createElement("audio");

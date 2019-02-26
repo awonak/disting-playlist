@@ -3,7 +3,6 @@ import { ipcRenderer } from "electron";
 import { Playlist } from "./models/playlist";
 import { PlaylistItem } from "./models/playlistItem";
 import { Sample } from "./models/sample";
-import { DEFAULT_NAME } from "./models/sampleList";
 
 
 const addPlaylistBtn = document.getElementById("addPlaylistBtn");
@@ -39,7 +38,7 @@ function selectPlaylist(name: string) {
     toggleSettings();
 }
 
-// Add new Playlist Item.
+// Add new playlist item.
 addPlaylistBtn.addEventListener("click", (e: any) => {
     ipcRenderer.send("playlist:show");
 });
@@ -49,24 +48,30 @@ addSamplestBtn.addEventListener("click", (e: any) => {
     ipcRenderer.send("sample:dialog");
 });
 
-// Select Playlist Item.
+// Select playlist item.
 playlistElement.addEventListener("click", (e: any) => {
     const name = e.target.getAttribute("name");
     selectPlaylist(name);
 });
 
-// Select Sample Item.
+// Select sample item.
 sampleListElement.addEventListener("click", (e: any) => {
     const name = e.target.getAttribute("name");
-    activeSample = activePlaylistItem.selectSample(name);
-    toggleSettings();
-    const defaultSettings = activePlaylistItem.getSample(DEFAULT_NAME).getSettings();
-    activeSample.renderSettings(defaultSettings);
+    if (activeSample && activeSample.getName() === name) {
+        // pause or play active sample.
+        activeSample.togglePlay();
+    } else {
+        // select new active sample and render settings values.
+        activeSample = activePlaylistItem.selectSample(name);
+        activeSample.renderSettings(activePlaylistItem.getDefaultSettings());
+        toggleSettings();
+    }
 });
 
 // Update the settings value for the active sample.
 settingsListElement.onchange = (e: any) => {
     activeSample.updateSetting(e.target.id, e.target.value);
+    activeSample.renderSettings(activePlaylistItem.getDefaultSettings());
 };
 
 // Received playlist name from add playlist modal.
