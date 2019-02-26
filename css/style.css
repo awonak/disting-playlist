@@ -1,0 +1,35 @@
+.write-btn {
+    width:65%;
+}
+
+.main .col ul {
+    max-height: 432px;
+    overflow: scroll;
+    overflow-x:visible;
+    overflow-y:auto;
+}
+
+.collection-item:hover,
+.collection-item:hover {
+    background-color:#ddd;
+}
+
+#settings .collection-item:hover {
+    background-color: inherit;
+}
+
+#playlist .collection .active,
+#samples .collection .active {
+    font-weight: bold;
+}
+
+#settings li.actual label {
+    color: #000;;
+    font-weight:bold;
+}
+#settings li.default label {
+    font-style: italic;
+}
+#samples li.waves-effect {
+    display: block;
+}

@@ -3,52 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>Disting mk4 SD Card Playlist Manaager</title>
-
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <style>
-    .write-btn {
-      width:65%;
-    }
-
-    .main .col ul {
-      max-height: 432px;
-      overflow: scroll;
-      overflow-x:visible;
-      overflow-y:auto;
-    }
-
-    .collection-item:hover,
-    .collection-item:hover {
-      background-color:#ddd;
-    }
-
-    #settings .collection-item:hover {
-      background-color: inherit;
-    }
-
-    #playlist .collection .active,
-    #samples .collection .active {
-      font-weight: bold;
-    }
-
-    #settings li.actual label {
-      color: #000;;
-      font-weight:bold;
-    }
-    #settings li.default label {
-      font-style: italic;
-    }
-    #samples li.waves-effect {
-      display: block;
-    }
-    </style>
+    <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
 
@@ -112,7 +70,7 @@
 
     <div class="container">
       <div class="center-align">
-        <a class="write-btn waves-effect waves-light btn-large">
+        <a id="writeToSDCardBtn" class="write-btn waves-effect waves-light btn-large">
           <i class="material-icons sd_card">sd_card</i>
           Write to SD Card
         </a>
@@ -122,7 +80,6 @@
   </body>
 
   <script>
-    // You can also require other files to run in this process
     require('./dist/renderer.js')
   </script>
 </html>
