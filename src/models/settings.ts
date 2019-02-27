@@ -8,8 +8,19 @@ export class Settings {
         this.element = document.getElementById("settings");
         this.settings = [
             new Setting("loop"),
-            new Setting("fadeIn"),
             new Setting("fadeOut"),
+            new Setting("fadeIn"),
+            new Setting("gap"),
+            new Setting("retriggerOnSampleChange"),
+            new Setting("fixedPitch"),
+            new Setting("ramp"),
+            new Setting("triggers"),
+            new Setting("clocks"),
+            new Setting("wavelength"),
+            new Setting("natural"),
+            new Setting("switch"),
+            new Setting("playToCompletion"),
+            new Setting("useStartOnSampleChange"),
         ];
     }
 

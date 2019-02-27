@@ -92,6 +92,7 @@ ipcRenderer.on("playlist:add", (e: any, name: string) => {
 // Add samples selected from file dialog.
 ipcRenderer.on("samples:add", (e: any, filepaths: string[]) => {
     filepaths.forEach((filepath) => {
+        // TODO: validate the filepath points to a .wav file.
         activePlaylistItem.addSample(new Sample(filepath));
     });
 });

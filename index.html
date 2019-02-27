@@ -40,29 +40,69 @@
         <form class="col s12">
         <ul id="settings" class="collection" hidden>
           <li class="collection-item">
+            <!--
             <label for="loop">Loop</label>
             <div class="switch">
               <label>
                 Off<input type="checkbox" id="loop"><span class="lever"></span>On
               </label>
             </div>
+            -->
+            <label for="loop">Loop</label>
+            <input placeholder="Whether the sample loops (value 1) or is a one-shot (value 0)." id="loop" type="number" min="0" max="1" class="validate">
           </li>
           <li class="collection-item">
-            <label for="first_name">Fade Out</label>
+            <label for="fadeIn">Fade Out</label>
             <input placeholder="Fade out to apply when a sample is retriggered, in miliseconds." id="fadeIn" type="number" class="validate">
           </li>
           <li class="collection-item">
-            <label for="first_name">Fade In</label>
+            <label for="fadeOut">Fade In</label>
             <input placeholder="Fade in to apply when a sample is retriggered, in miliseconds." id="fadeOut" type="number" class="validate">
           </li>
-
-          <!-- <li class="collection-item">Gap [ 0 ms ] </li>
-          <li class="collection-item">Retrigger On Sample Change [ 0 ms ] </li>
-          <li class="collection-item">Fixed Pitch[ 0 ms ] </li>
-          <li class="collection-item">Ramp [ 0 ms ] </li>
-          <li class="collection-item">Triggers [ 0 ms ] </li>
-          <li class="collection-item">Clocks[ 0 ms ] </li>
-          <li class="collection-item">Wave Length [ 0 ms ] </li> -->
+          <li class="collection-item">
+            <label for="gap">Gap</label>
+            <input placeholder="Gap (silence) between fade out and fade in, in milliseconds." id="gap" type="number" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="retriggerOnSampleChange">Retrigger On Sample Change</label>
+            <input placeholder="When selecting a sample, immediately play the new sample." id="retriggerOnSampleChange" type="number" min="0" max="1" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="fixedPitch">Fixed Pitch</label>
+            <input placeholder="Play the sample at a fixed pitch, not controlled by the pitch CV." id="fixedPitch" type="number" min="0" max="1" step="0.01" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="ramp">Ramp</label>
+            <input placeholder="Switch Output B to emit a ramp CV." id="ramp" type="number" min="0" max="1" step="0.01" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="triggers">Triggers</label>
+            <input placeholder="Outputs a number of triggers equally spaced out over the sample length." id="triggers" type="number" min="0" max="32767" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="clocks">Clocks</label>
+            <input placeholder="Set the number of clocks per loop for the Clocked Audio Playback Algorithm." id="clocks" type="number" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="wavelength">Wavelength</label>
+            <input placeholder="Set the number of sample frames per waveform for the Wavetable VCO algorithm." id="wavelength" type="number" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="natural">Natural</label>
+            <input placeholder="The file's natural pitch as a MIDI note number." id="natural" type="number" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="switch">Switch</label>
+            <input placeholder="The file's switch point as a MIDI note number." id="switch" type="number" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="playToCompletion">Play To Completion</label>
+            <input placeholder="Prevents a one-shot sample being retriggered while playing." id="playToCompletion" type="number" class="validate">
+          </li>
+          <li class="collection-item">
+            <label for="useStartOnSampleChange">Use Start On Sample Change</label>
+            <input placeholder="Whether switching to a new sample continues from an equivalent playback position or restarts." id="useStartOnSampleChange" type="number" class="validate">
+          </li>
         </ul>
       </div>
 
