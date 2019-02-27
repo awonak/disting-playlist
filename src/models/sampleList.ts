@@ -10,12 +10,12 @@ export class SampleList {
         this.samples = [new Sample(DEFAULT_NAME)];
     }
 
-    public addSample(sample: Sample) {
+    public addSample(sample: Sample): void {
         this.samples.push(sample);
         this.renderItem(sample);
     }
 
-    public getSample(name: string) {
+    public getSample(name: string): Sample {
         let sample: Sample = null;
         this.samples.forEach((item) => {
             if (item.getName() === name) {
@@ -25,14 +25,18 @@ export class SampleList {
         return sample;
     }
 
-    public deselectSample() {
+    public getSamples(): Sample[] {
+        return this.samples;
+    }
+
+    public deselectSample(): void {
         this.samples.forEach((sample) => {
             sample.stop();
             sample.getElement().classList.remove("active");
         });
     }
 
-    public selectSample(name: string) {
+    public selectSample(name: string): Sample {
         const sample = this.getSample(name);
         this.deselectSample();
         sample.togglePlay();
@@ -41,7 +45,7 @@ export class SampleList {
         return sample;
     }
 
-    public clear() {
+    public clear(): void {
         while (this.element.firstChild) {
             this.element.removeChild(this.element.firstChild);
         }
@@ -51,7 +55,7 @@ export class SampleList {
         this.element.appendChild(sample.getElement());
     }
 
-    public render() {
+    public render(): void {
         this.clear();
         this.samples.forEach((sample) => this.renderItem(sample));
     }

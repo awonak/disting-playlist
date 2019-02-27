@@ -24,6 +24,10 @@ export class Playlist {
         return playlistItem;
     }
 
+    public getItems(): PlaylistItem[] {
+        return this.items;
+    }
+
     public selectItem(name: string): PlaylistItem {
         for (const item of this.element.children as any) {
             (item.getAttribute("name") === name)
@@ -38,7 +42,6 @@ export class Playlist {
     public serialize(): string {
         const buffer: string[] = [];
         this.items.forEach((item) => {
-            buffer.push(`PLAYLIST::: ${item.getName()}\n`);
             buffer.push("disting playlist v1\n");
             buffer.push(item.serialize());
         });

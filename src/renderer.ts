@@ -1,9 +1,11 @@
 import { ipcRenderer } from "electron";
 import log from "electron-log";
+import * as fs from "fs";
 
 import { Playlist } from "./models/playlist";
 import { PlaylistItem } from "./models/playlistItem";
 import { Sample } from "./models/sample";
+import { DEFAULT_NAME } from "./models/sampleList";
 
 
 const addPlaylistBtn = document.getElementById("addPlaylistBtn");
@@ -78,7 +80,7 @@ settingsListElement.onchange = (e: any) => {
 
 // Click Write to SD Card button.
 writeToSDCardBtn.addEventListener("click", (e: any) => {
-    log.debug(playlist.serialize());
+    ipcRenderer.send("write:dialog");
 });
 
 // Received playlist name from add playlist modal.
@@ -91,5 +93,35 @@ ipcRenderer.on("playlist:add", (e: any, name: string) => {
 ipcRenderer.on("samples:add", (e: any, filepaths: string[]) => {
     filepaths.forEach((filepath) => {
         activePlaylistItem.addSample(new Sample(filepath));
+    });
+});
+
+// Serialize the playlists and write to path specified along with each sample.
+ipcRenderer.on("write:filesystem", (e: any, filepath: string) => {
+    // Copy each sample to playlist folder
+    playlist.getItems().forEach((item) => {
+        const playlistPath = filepath + "/" + item.getName();
+        fs.mkdir(playlistPath, (err: any) => {
+            if (err) {
+                throw err;
+            }
+        });
+        // Write the playlist file to the playlist folder.
+        const playlistFile = playlistPath + "/playlist.txt";
+        fs.writeFile(playlistFile, playlist.serialize(), (err: any) => {
+            if (err) {
+                throw err;
+            }
+        });
+        item.getSamples().forEach((sample) => {
+            if (sample.getName() !== DEFAULT_NAME) {
+                const dest = playlistPath + "/" + sample.getName();
+                fs.copyFile(sample.getFilepath(), dest, (err) => {
+                    if (err) {
+                        throw err;
+                    }
+                });
+            }
+        });
     });
 });

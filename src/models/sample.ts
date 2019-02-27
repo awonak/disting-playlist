@@ -15,39 +15,43 @@ export class Sample {
         this.settings = new Settings();
     }
 
-    public getName() {
+    public getName(): string {
         return this.name;
     }
 
-    public getElement() {
+    public getElement(): HTMLElement {
         return this.element;
+    }
+
+    public getFilepath(): string {
+        return this.filepath;
     }
 
     public getSetting(name: string) {
         this.settings.getSetting(name);
     }
 
-    public getSettings() {
+    public getSettings(): Settings {
         return this.settings;
     }
 
-    public renderSettings(d: Settings) {
+    public renderSettings(d: Settings): void {
         this.settings.render(d);
     }
 
-    public updateSetting(name: string, value: any) {
+    public updateSetting(name: string, value: any): void {
         const setting = this.settings.getSetting(name);
         setting.setValue(value);
     }
 
-    public togglePlay() {
+    public togglePlay(): void {
         if (this.audio) {
             this.audio.currentTime = 0;
             (this.audio.paused) ? this.audio.play() : this.audio.pause();
         }
     }
 
-    public stop() {
+    public stop(): void {
         if (this.audio) {
             this.audio.pause();
         }
@@ -62,7 +66,7 @@ export class Sample {
         return buffer.join("");
     }
 
-    private createElement() {
+    private createElement(): void {
         const li = document.createElement("li");
         const itemText = document.createTextNode(this.name);
         li.classList.add("collection-item");

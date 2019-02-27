@@ -29,7 +29,11 @@ export class PlaylistItem {
         return this.samples.getSample(name);
     }
 
-    public deselectSample() {
+    public getSamples(): Sample[] {
+        return this.samples.getSamples();
+    }
+
+    public deselectSample(): void {
         return this.samples.deselectSample();
     }
 
@@ -41,7 +45,7 @@ export class PlaylistItem {
         return this.getSample(DEFAULT_NAME).getSettings();
     }
 
-    public render() {
+    public render(): void {
         this.deselectSample();
         this.samples.render();
     }

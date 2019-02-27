@@ -61,6 +61,19 @@ ipcMain.on("sample:dialog", (e: any) => {
   }
 });
 
+// Handle write to SD card dialog.
+ipcMain.on("write:dialog", (e: any) => {
+  const files: string[] = (dialog.showOpenDialog(mainWindow,
+    {
+      buttonLabel: "Write to SD card",
+      properties: ["openDirectory"],
+      title: "Select your SD card drive to write playlists.",
+    }));
+  if (files) {
+    mainWindow.webContents.send("write:filesystem", files);
+  }
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
