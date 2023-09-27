@@ -49,13 +49,17 @@ ipcMain.on("playlist:submit", (e: any, name: string) => {
 
 // Handle show add sample dialog.
 ipcMain.on("sample:dialog", (e: any) => {
-  const files: string[] = (dialog.showOpenDialog(mainWindow, {
+  var files;
+  
+  (dialog.showOpenDialog(mainWindow, {
     filters: [
       { name: "Audio", extensions: ["wav"] },
       { name: "All Files", extensions: ["*"] },
     ],
     properties: ["openFile", "multiSelections"],
-  }));
+  })).then(res => {
+    files = res;
+  });
   if (files) {
     mainWindow.webContents.send("samples:add", files);
   }
@@ -63,12 +67,16 @@ ipcMain.on("sample:dialog", (e: any) => {
 
 // Handle write to SD card dialog.
 ipcMain.on("write:dialog", (e: any) => {
-  const files: string[] = (dialog.showOpenDialog(mainWindow,
+  var files;
+
+  (dialog.showOpenDialog(mainWindow,
     {
       buttonLabel: "Write to SD card",
       properties: ["openDirectory"],
       title: "Select your SD card drive to write playlists.",
-    }));
+    })).then(res => {
+      files = res;
+     });
   if (files) {
     mainWindow.webContents.send("write:filesystem", files);
   }

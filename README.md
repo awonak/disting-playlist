@@ -1,22 +1,16 @@
-# Disting mk4 SD Card Playlist Manager
+
+
+# NOTE This is my attempt to get this working in 2023 after the original project has sat for years without updates. It is entierly a work in progress and may never succeed. Don't expect anything from it at this point.
+
+
+## Disting mk4 SD Card Playlist Manager
+-----
 
 Desktop application for creating audio playlists for the [Expert Sleepers Disting mk4](http://www.expert-sleepers.co.uk/disting.html) v4.10.
 
 With the Playlist Manager you can create playlist folders and add samples to that playlist. Each playlist has default settings that will be applied to all samples within that playlist. When a playlist is complete, the contents can be written to your SD card for use with the Disting mk4.
 
 *NOTE This tool is still in development and may be broken*
-
-TODO:
-- Load existing SD card into Playlist Manager
-- Additional sample specific validations
-- Improve settings form field inputs
-- Support for MIDI files
-- Support for Wavetable files
-- Create binary versioned releases for direct download
-
-![Screenshot 1](/images/screenshot01.png "Screenshot 1")
-
-![Screenshot 2](/images/screenshot02.png "Screenshot 2")
 
 
 ## To Use
